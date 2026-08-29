@@ -1,11 +1,17 @@
-name: Hello Workflow
+name: Test HTML Project
 
 on: push
 
 jobs:
-  say-hello:
+  test-html:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: test -f index.html
+
+      - name: Print success message
+        run: echo "index.html exists!"
